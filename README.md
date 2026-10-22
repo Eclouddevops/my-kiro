@@ -41,7 +41,43 @@ docker/      Dockerfiles and compose for local dev
 - Docker (for Postgres locally and for sandboxed code execution)
 - AWS account with Amazon Bedrock model access (for live LLM calls)
 
-## Quick start (local dev)
+## Quick start
+
+### macOS / Linux (fast path)
+
+The repo ships bash scripts and a `Makefile` for Unix-like systems:
+
+```bash
+make setup    # create backend venv, install backend + frontend deps, copy .env files
+make dev      # run backend (:8000) + frontend (:5173) together; Ctrl+C stops both
+make test     # run backend + frontend test suites
+make help     # list all targets
+```
+
+Without `make`, the scripts work directly:
+
+```bash
+./scripts/setup.sh
+./scripts/dev.sh
+./scripts/test.sh            # or: ./scripts/test.sh backend | frontend
+```
+
+### Windows (PowerShell)
+
+Windows has no `make` by default, so run the steps directly (or use `make`
+from WSL / Git Bash).
+
+### Docker (any platform)
+
+```bash
+docker compose -f docker/docker-compose.yml up --build
+# or, on macOS/Linux: make up
+```
+
+This starts PostgreSQL, the FastAPI backend (http://localhost:8000), and the
+Vite dev server (http://localhost:5173).
+
+## Manual setup (without the scripts)
 
 ### 1. Configure environment
 
@@ -51,25 +87,27 @@ cp frontend/.env.example frontend/.env
 # edit backend/.env with your AWS region, Bedrock model id, and DB URL
 ```
 
-### 2. Start infrastructure + services
+### 2. Run the backend
 
-```bash
-docker compose -f docker/docker-compose.yml up --build
-```
-
-This starts PostgreSQL, the FastAPI backend (http://localhost:8000), and the
-Vite dev server (http://localhost:5173).
-
-### 3. Run backend without Docker (optional)
+**macOS / Linux:**
 
 ```bash
 cd backend
-python -m venv .venv && . .venv/Scripts/activate   # PowerShell: .\.venv\Scripts\Activate.ps1
+python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 uvicorn app.main:app --reload
 ```
 
-### 4. Run frontend without Docker (optional)
+**Windows (PowerShell):**
+
+```powershell
+cd backend
+python -m venv .venv ; .\.venv\Scripts\Activate.ps1
+pip install -e ".[dev]"
+uvicorn app.main:app --reload
+```
+
+### 3. Run the frontend (any platform)
 
 ```bash
 cd frontend
@@ -86,10 +124,12 @@ backend and are never exposed to the browser.
 ## Testing
 
 ```bash
-# backend
-cd backend && pytest
+# macOS / Linux
+make test                    # both suites
+./scripts/test.sh backend    # backend only
 
-# frontend
+# any platform, manually
+cd backend && pytest
 cd frontend && npm test
 ```
 

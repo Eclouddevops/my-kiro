@@ -1,0 +1,14 @@
+# Normalize line endings across platforms. Shell scripts MUST stay LF or they
+# will not run on macOS/Linux; Windows batch files stay CRLF.
+* text=auto eol=lf
+
+*.sh      text eol=lf
+*.bat     text eol=crlf
+*.ps1     text eol=crlf
+
+# Binary / generated assets are never diffed or normalized.
+*.png     binary
+*.jpg     binary
+*.gif     binary
+*.webp    binary
+*.ico     binary
