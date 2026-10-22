@@ -1,0 +1,147 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.chat-title {
+  padding: 10px 12px;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--fg-1);
+  border-bottom: 1px solid var(--border);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-hint {
+  color: var(--fg-1);
+  font-style: italic;
+}
+
+.msg {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.msg-role {
+  font-size: 11px;
+  color: var(--fg-1);
+}
+.msg-body {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: var(--bg-0);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px;
+}
+.msg-user .msg-body {
+  background: var(--bg-3);
+}
+.typing {
+  color: var(--fg-1);
+  font-style: italic;
+}
+
+.proposals {
+  border-top: 1px solid var(--border);
+  background: var(--bg-0);
+  padding: 8px;
+}
+.proposals-head {
+  font-size: 11px;
+  color: var(--dirty);
+  margin-bottom: 6px;
+}
+.proposals-list {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  max-height: 140px;
+  overflow: auto;
+}
+.proposal {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+}
+.badge {
+  font-size: 10px;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+.badge-write {
+  background: var(--accent);
+  color: #fff;
+}
+.badge-delete {
+  background: var(--danger);
+  color: #fff;
+}
+.proposal-path {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.proposals-actions {
+  display: flex;
+  gap: 6px;
+}
+.proposals-actions button {
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  color: #fff;
+}
+.apply {
+  background: var(--ok);
+  color: #10240f;
+}
+.reject {
+  background: var(--bg-2);
+  color: var(--fg-0);
+}
+
+.chat-input {
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  border-top: 1px solid var(--border);
+}
+.chat-input textarea {
+  flex: 1;
+  resize: none;
+  height: 54px;
+  background: var(--bg-0);
+  border: 1px solid var(--border);
+  color: var(--fg-0);
+  border-radius: 4px;
+  padding: 6px;
+  font-family: inherit;
+}
+.chat-input button {
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 14px;
+}
+.chat-input button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.chat-input button:not(:disabled):hover {
+  background: var(--accent-hover);
+}

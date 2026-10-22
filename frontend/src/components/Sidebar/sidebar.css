@@ -1,0 +1,99 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar-section {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+.sidebar-section.grow {
+  flex: 1;
+  overflow: auto;
+  border-bottom: none;
+}
+
+.sidebar-title {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--fg-1);
+  padding: 8px 12px 4px;
+}
+
+.project-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.project {
+  padding: 4px 12px;
+  cursor: pointer;
+}
+.project:hover {
+  background: var(--bg-2);
+}
+.project.active {
+  background: var(--accent);
+  color: #fff;
+}
+.project.empty {
+  color: var(--fg-1);
+  cursor: default;
+  font-style: italic;
+}
+
+.new-project {
+  display: flex;
+  gap: 4px;
+  padding: 6px 12px 0;
+}
+.new-project input {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg-0);
+  border: 1px solid var(--border);
+  color: var(--fg-0);
+  padding: 4px 6px;
+  border-radius: 3px;
+}
+.new-project button {
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  width: 26px;
+  border-radius: 3px;
+}
+.new-project button:hover {
+  background: var(--accent-hover);
+}
+
+.file-tree {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tree-node {
+  padding: 3px 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tree-node.file {
+  cursor: pointer;
+}
+.tree-node.file:hover {
+  background: var(--bg-2);
+}
+.tree-node.file.active {
+  background: var(--bg-3);
+}
+.tree-node.dir {
+  color: var(--fg-1);
+}
+.tree-empty {
+  padding: 8px 12px;
+  color: var(--fg-1);
+  font-style: italic;
+}

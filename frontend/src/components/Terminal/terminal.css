@@ -1,0 +1,35 @@
+.terminal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+.terminal-tabs {
+  display: flex;
+  gap: 12px;
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.terminal-tab {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--fg-1);
+  cursor: pointer;
+}
+.terminal-tab.active {
+  color: var(--fg-0);
+  border-bottom: 1px solid var(--fg-0);
+}
+.terminal-body {
+  flex: 1;
+  overflow: auto;
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fg-1);
+}
+.terminal-prompt {
+  color: var(--ok);
+  margin-right: 6px;
+}
